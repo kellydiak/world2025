@@ -33,11 +33,12 @@ $desPays = getCountriesByContinent($continent);
        <?php
        // $desPays est un tableau dont les éléments sont des objets représentant
        // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
-          $pays = $desPays[0]; ?>
+          foreach ($desPays as $lePays): ?>
           <tr>
-            <td> <?php echo $pays->Name ?></td>
-            <td> <?php echo $pays->Population ?></td>
+            <td> <?php echo $lePays->Name ?></td>
+            <td> <?php echo $lePays->Population ?></td>
           </tr>
+          <?php endforeach ; ?>
      </table>
     </div>
     <p>

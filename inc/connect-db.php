@@ -15,9 +15,9 @@
 
 ini_set('display_errors', 1);
 define('DB_NAME', 'world');
-define('DB_DSN', 'mysql:host=localhost;dbname=' . DB_NAME . ';charset=utf8');
+define('DB_DSN', 'mysql:host=localhost;dbname=world;charset=utf8');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'sio');
+define('DB_PASSWORD', 'root');
 define('DEBUG', true);
 
 /**
