@@ -16,19 +16,27 @@
 <?php  require_once 'header.php'; ?>
 <?php
 require_once 'inc/manager-db.php';
-$continent = 'Asia';
-$desPays = getCountriesByContinent($continent);
+if (isset($_GET['name']) && !empty($_GET['name']) ){
+  $continent = ($_GET['name']);
+  $desPays = getCountriesByContinent($continent);
+} else {
+  $continent = "Monde";
+  $desPays = getAllCountries();
+}
+//$continent = 'Asia';
+//$desPays = getCountriesByContinent($continent);
 ?>
 
 <main role="main" class="flex-shrink-0">
 
   <div class="container">
-    <h1>Les pays en Asie</h1>
+    <h1>Countries in <?php echo $continent ; ?> </h1>
     <div>
      <table class="table">
          <tr>
            <th>Nom</th>
            <th>Population</th>
+           <th>Capitale</th>
          </tr>
        <?php
        // $desPays est un tableau dont les éléments sont des objets représentant
@@ -37,6 +45,7 @@ $desPays = getCountriesByContinent($continent);
           <tr>
             <td> <?php echo $lePays->Name ?></td>
             <td> <?php echo $lePays->Population ?></td>
+            <td> <?php echo getCapitale($lePays->Capital)->Name ?></td>
           </tr>
           <?php endforeach ; ?>
      </table>

@@ -60,3 +60,29 @@ function getAllCountries()
     $query = 'SELECT * FROM Country;';
     return $pdo->query($query)->fetchAll();
 }
+
+/**
+ * Obtenir la liste des continents
+ */
+function getContinent()
+{
+    global $pdo;
+    $query = 'SELECT DISTINCT continent FROM Country;';
+    return $pdo->query($query)->fetchAll();
+}
+/**
+ * Obtenir la capitale pour
+ */
+function getCapitale($num) {
+    global $pdo;
+    $query = 'SELECT Name FROM City where id = :num;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':num', $num, PDO::PARAM_INT);
+    $prep->execute();
+    // var_dump($prep);  pour du debug
+    // var_dump($continent);
+
+    // on retourne un tableau d'objets (car spécifié dans connect-db.php)
+    return $prep->fetch();
+
+}

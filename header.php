@@ -33,6 +33,11 @@
         font-size: 3.5rem;
       }
     }
+
+    .dropdown-menu{
+      max-height: 400px;
+      overflow-y: auto;
+    }
   </style>
   <!-- Custom styles for this template -->
   <link href="css/custom.css" rel="stylesheet">
@@ -48,23 +53,31 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
+      <?php
+              require_once 'inc/manager-db.php';
+              $lesContinents = getContinent() ;
+              $lesPays = getAllCountries();
+              //var_dump($lesContinents)?>
         <li class="nav-item active">
           <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pays</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <?php foreach($lesPays as $lePays) : ?> 
+            <a class="dropdown-item" href="index2.php?name=<?= $lePays->id ; ?>"><?= $lePays->Name; ?> </a>
+          <?php endforeach ; ?>
+        </li>
+        <li class="nav-item dropdown"> 
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Continent</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="index2.php?name=Europe">Europe</a>
-            <a class="dropdown-item" href="index2.php?name=Africa">Afrique</a>
-            <a class="dropdown-item" href="index2.php?name=Asia">Asie</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+          <?php foreach($lesContinents as $leContinent) : ?> 
+            <a class="dropdown-item" href="index2.php?name=<?= $leContinent->continent ; ?>"><?= $leContinent->continent; ?> </a>
+          <?php endforeach ; ?>
           </div>
         </li>
       </ul>
