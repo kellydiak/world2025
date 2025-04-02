@@ -30,7 +30,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
 <main role="main" class="flex-shrink-0">
 
   <div class="container">
-    <h1>Countries in <?php echo $continent ; ?> </h1>
+    <h1>Pays en <?php echo $continent ; ?> </h1>
     <div>
      <table class="table">
          <tr>
@@ -43,7 +43,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
        // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
           foreach ($desPays as $lePays): ?>
           <tr>
-            <td> <?php echo $lePays->Name ?></td>
+            <td> <?php echo $lePays->Name ?></td> <!--faut il mettre un href sur les noms  -->
             <td> <?php echo $lePays->Population ?></td>
             <td> <?php echo getCapitale($lePays->Capital)->Name ?></td>
           </tr>
@@ -53,7 +53,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
     <p>
         <code>
       <?php
-        var_dump($desPays[0]);
+        var_dump($desPays);
         ?>
         </code>
     </p>

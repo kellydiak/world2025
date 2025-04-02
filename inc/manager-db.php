@@ -58,7 +58,7 @@ function getAllCountries()
 {
     global $pdo;
     $query = 'SELECT * FROM Country;';
-    return $pdo->query($query)->fetchAll();
+    return $pdo->query($query)->fetchAll(); 
 }
 
 /**
@@ -85,4 +85,15 @@ function getCapitale($num) {
     // on retourne un tableau d'objets (car spécifié dans connect-db.php)
     return $prep->fetch();
 
+
+    function getPaysDetails($id) {
+        global $pdo;
+        $query = 'SELECT Code, Continent, Capital, Population, SurfaceAera FROM Country WHERE id = :id;';
+        $prep = $pdo->prepare($query);
+        $prep->bindValue(':id', $id, PDO::PARAM_INT);
+        $prep->execute();
+        return $prep->fetch(PDO::FETCH_OBJ); // Retourne un objet avec les données du pays
+    }
+    
+    
 }

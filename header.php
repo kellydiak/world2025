@@ -17,7 +17,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <title>Homepage : GeoWorld</title>
+  <title>GeoWorld</title>
 
   <!-- Bootstrap core CSS -->
   <link href="assets/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -68,7 +68,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pays</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
           <?php foreach($lesPays as $lePays) : ?> 
-            <a class="dropdown-item" href="index2.php?name=<?= $lePays->id ; ?>"><?= $lePays->Name; ?> </a>
+            <a class="dropdown-item" href="descriptionPays.php?name=<?= $lePays->id ; ?>"><?= $lePays->Name; ?> </a>
           <?php endforeach ; ?>
         </li>
         <li class="nav-item dropdown"> 
