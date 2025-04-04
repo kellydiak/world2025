@@ -20,7 +20,6 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
 
   <div class="container">
     <h1><?php echo $lePays->Name ?></h1>
-    <!--<h1>Pays en : <?php// echo 'name' ; ?> </h1> Faire en sorte de récup le nom du pays + afficher drapeau-->
     <div>
   
      <table class="table">

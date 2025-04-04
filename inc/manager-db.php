@@ -94,7 +94,9 @@ function getCapitale($num) {
     
     
 }
-
+/**
+ * Obtenir les détails des pays
+ */
 function getPaysDetails($name) {
     global $pdo;
     $query = 'SELECT * FROM Country WHERE id = :name;';
