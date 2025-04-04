@@ -1,11 +1,21 @@
-<?php  require_once 'header.php'; ?>
-<?php require_once 'inc/manager-db.php';?>
-<?php
-if (isset($_GET['id']) && !empty($_GET['id']) ){
-  $id = ($_GET['id']);
-  $lePays= getPaysDetails($id); 
-}?>
+<?php  
+require_once 'header.php';
+require_once 'inc/manager-db.php';
 
+
+if (isset($_GET['name']) && !empty($_GET['name']) ){
+  $name = $_GET['name'];
+  $lePays = getPaysDetails($name); 
+}
+?>
+
+<style>
+  .bouttonDP {
+    background-color: rgb(255 182 193);
+    width: 70rem;  /* Longueur du bouton */
+    height: 30px;
+  }
+</style>
 <main role="main" class="flex-shrink-0">
 
   <div class="container">
@@ -21,7 +31,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) ){
            <th>Population</th>
            <th>Superficie</th>
          </tr>
-          <!-- faire le bouton -->
+         
        <?php
        // $desPays est un tableau dont les éléments sont des objets représentant
        // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
@@ -37,18 +47,20 @@ if (isset($_GET['id']) && !empty($_GET['id']) ){
          
      </table>
     </div>
-    <p>
-        <code>
-      <?php
-        var_dump($id);
-        ?>
-        </code>
-    </p>
+    <form>
+        <input class="bouttonDP" type="button" value="Voir les villes" />
+    </form>
+    <code>
+      <?//php
+        //var_dump($id);
+        //?>
+    </code>
     
   </div>
 </main>
 
 <?php
+//test($lePays);
 require_once 'javascripts.php';
 require_once 'footer.php';
 ?>

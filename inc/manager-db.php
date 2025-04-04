@@ -30,6 +30,13 @@ require_once 'connect-db.php';
  * 
  * @return array tableau d'objets (des pays)
  */
+
+ function test($arg) {
+    echo "<pre>";
+    print_r($arg);
+    echo "</pre>";
+}
+
 function getCountriesByContinent($continent)
 {
     // pour utiliser la variable globale dans la fonction
@@ -84,16 +91,15 @@ function getCapitale($num) {
 
     // on retourne un tableau d'objets (car spécifié dans connect-db.php)
     return $prep->fetch();
-
-
-    function getPaysDetails($id) {
-        global $pdo;
-        $query = 'SELECT Code, Continent, Capital, Population, SurfaceAera FROM Country WHERE id = :id;';
-        $prep = $pdo->prepare($query);
-        $prep->bindValue(':id', $id, PDO::PARAM_INT);
-        $prep->execute();
-        return $prep->fetch(PDO::FETCH_OBJ); // Retourne un objet avec les données du pays
-    }
     
     
+}
+
+function getPaysDetails($name) {
+    global $pdo;
+    $query = 'SELECT * FROM Country WHERE id = :name;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':name', $name, PDO::PARAM_STR);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_OBJ); // Retourne un objet avec les données du pays
 }
